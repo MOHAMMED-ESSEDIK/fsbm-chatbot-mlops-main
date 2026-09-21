@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_laboratoires
+    description: "Table structurée des laboratoires de recherche de la FSBM."
+    tests:
+      - dbt_expectations.expect_table_columns_to_match_set:
+          column_list: ["nom_laboratoire", "acronyme", "description", "directeur", "directeur_adjoint", "equipes_json"]
+    columns:
+      - name: nom_laboratoire
+        description: "Nom officiel du laboratoire."
+        tests:
+          - not_null
+          - unique
+      - name: acronyme
+        description: "Acronyme ou abréviation du laboratoire."
+        tests:
+          - unique

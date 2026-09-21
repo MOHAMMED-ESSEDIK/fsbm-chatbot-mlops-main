@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_professeurs
+    description: "Répertoire des professeurs de la FSBM avec leurs profils."
+    tests:
+      - dbt_expectations.expect_table_columns_to_match_set:
+          column_list: ["nom_professeur", "statut", "linkedin_url", "emails_json", "scopus_profile_url", "biographie", "nom_departement"]
+    columns:
+      - name: nom_professeur
+        description: "Nom complet du professeur."
+        tests:
+          - not_null
+          - unique

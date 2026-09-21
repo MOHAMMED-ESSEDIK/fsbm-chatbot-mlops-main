@@ -1,0 +1,11 @@
+node_modules/
+.next/
+__pycache__/
+*.pyc
+.pytest_cache/
+! .env.example
+dataops/data/duckdb/*.duckdb
+llm-engine/vectordb/
+.git/
+.github/
+tests/

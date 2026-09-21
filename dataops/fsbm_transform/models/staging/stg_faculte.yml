@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_faculte
+    description: "Table contenant les informations générales, la direction et les contacts de la FSBM."
+    tests:
+      - dbt_expectations.expect_table_columns_to_match_set:
+          column_list: ["nom_officiel", "acronyme", "universite_de_rattachement", "annee_de_creation", "doyen", "vice_doyen", "description", "adresse", "fax", "site_web", "emails_json", "localisation_json", "telephones_json", "departements_inclus_json"]
+    columns:
+      - name: nom_officiel
+        description: "Nom complet de l'établissement."
+        tests:
+          - not_null
+          - unique

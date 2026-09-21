@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_formations
+    description: "Table structurée de toutes les formations (Licences, Masters, Doctorats)."
+    tests:
+      - dbt_expectations.expect_table_columns_to_match_set:
+          column_list: ["cycle", "nom_departement", "nom_filiere", "coordonnateur", "specialite", "objectifs", "debouches", "cible", "domaine", "description", "modules_json", "axes_recherche_json"]
+    columns:
+      - name: cycle
+      - name: nom_departement
+      - name: nom_filiere
